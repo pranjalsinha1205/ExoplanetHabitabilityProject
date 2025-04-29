@@ -1,0 +1,28 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exoplanet Habitability Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-title">Exoplanet Habitability Application</div>
+        <div class="nav-link">
+            <a href="https://github.com/your-repo" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"> Source
+            </a>
+        </div>
+    </nav>
+
+    <div class="box">
+        <img src="{{ url_for('static', filename='images/habitable.png' if habitable else 'images/no_habitable.png') }}" class="result-img">
+        <p class="similarity">Similarity to Earth: {{ similarity }}%</p>
+        <p class="verdict">
+            This exoplanet is {{ 'habitable' if habitable else 'not habitable' }}.
+        </p>
+        <a href="/" class="btn">Try Another</a>
+    </div>
+</body>
+</html>

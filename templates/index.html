@@ -1,0 +1,30 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exoplanet Habitability Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-title">Exoplanet Habitability Application</div>
+        <div class="nav-link">
+            <a href="https://github.com/your-repo" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"> Source
+            </a>
+        </div>
+    </nav>
+
+    <div class="box">
+        <form method="POST">
+            {% for feature in ['pl_orbper', 'pl_orbsmax', 'pl_rade', 'pl_bmasse', 'pl_orbeccen',
+                               'pl_insol', 'pl_eqt', 'st_teff', 'st_rad', 'st_mass'] %}
+                <label>{{ feature }}:</label>
+                <input type="number" step="any" name="{{ feature }}" required>
+            {% endfor %}
+            <button type="submit">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>

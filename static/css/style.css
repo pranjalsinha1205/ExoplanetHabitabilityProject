@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    text-align: center;
+}
+
+nav {
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+
+.nav-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00ffe7;
+}
+
+.nav-link a {
+    color: #00ffe7;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link img {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.box {
+    background-color: rgba(255,255,255,0.1);
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 15px;
+    width: 60%;
+    backdrop-filter: blur(10px);
+}
+
+label {
+    display: block;
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+input {
+    padding: 0.5em;
+    margin-top: 0.2em;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+}
+
+button, .btn {
+    margin-top: 2em;
+    padding: 0.8em 1.5em;
+    background: #00ffe7;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.result-img {
+    width: 300px;
+    margin: 1em auto;
+}
+
+.similarity, .verdict {
+    font-size: 1.2em;
+    margin: 0.5em;
+}
