@@ -18,10 +18,11 @@
 
     <div class="box">
         <img src="{{ url_for('static', filename='images/habitable.png' if habitable else 'images/no_habitable.png') }}" class="result-img">
-        <p class="similarity">Similarity to Earth: {{ similarity }}%</p>
+        <!-- <p class="similarity">Similarity to Earth: {{ similarity }}%</p> -->
         <p class="verdict">
             This exoplanet is {{ 'habitable' if habitable else 'not habitable' }}.
         </p>
+        <br>
         <a href="/" class="btn">Try Another</a>
     </div>
 </body>

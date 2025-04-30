@@ -1,30 +1,87 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Exoplanet Habitability Application</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
 </head>
 <body>
     <nav>
         <div class="nav-title">Exoplanet Habitability Application</div>
         <div class="nav-link">
-            <a href="https://github.com/your-repo" target="_blank">
+            <a href="https://github.com/pranjalsinha1205/ExoplanetHabitabilityProject" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"> Source
             </a>
         </div>
+        <div class="theme-toggle">
+            <input type="checkbox" id="toggle-theme" />
+            <label for="toggle-theme" class="toggle-label" title="Toggle light/dark mode">
+              🌙
+            </label>
+          </div>          
     </nav>
 
     <div class="box">
         <form method="POST">
-            {% for feature in ['pl_orbper', 'pl_orbsmax', 'pl_rade', 'pl_bmasse', 'pl_orbeccen',
-                               'pl_insol', 'pl_eqt', 'st_teff', 'st_rad', 'st_mass'] %}
-                <label>{{ feature }}:</label>
-                <input type="number" step="any" name="{{ feature }}" required>
-            {% endfor %}
+            <button type="button" onclick="fillDefaults()" class="btn">Autofill Earth-Like Values</button>
+            <div class="grid-container">
+                {% set features = ['pl_orbper', 'pl_orbsmax', 'pl_rade', 'pl_bmasse', 
+                                   'pl_orbeccen', 'pl_insol', 'pl_eqt', 
+                                   'st_teff', 'st_rad', 'st_mass'] %}
+                {% for feature in features %}
+                    <div class="form-group">
+                        <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}</label>
+                        <input type="number" step="any" name="{{ feature }}" required placeholder="{{ feature.replace('_', ' ').title() }}">
+                    </div>
+                {% endfor %}
+            </div>
             <button type="submit">Analyze</button>
         </form>
     </div>
+    <script>
+        function fillDefaults() {
+            const earthDefaults = {
+                pl_orbper: 365.25,
+                pl_orbsmax: 1.0,
+                pl_rade: 1.0,
+                pl_bmasse: 1.0,
+                pl_orbeccen: 0.0167,
+                pl_insol: 1.0,
+                pl_eqt: 288,
+                st_teff: 5778,
+                st_rad: 1.0,
+                st_mass: 1.0
+            };
+    
+            for (const [key, value] of Object.entries(earthDefaults)) {
+                const input = document.querySelector(`input[name="${key}"]`);
+                if (input) {
+                    input.value = value;
+                }
+            }
+        }
+
+        const toggle = document.getElementById("toggle-theme");
+        const label = document.querySelector(".toggle-label");
+
+        // Check if user has a stored preference
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
+            toggle.checked = true;
+            label.textContent = "☀️";
+        }
+
+        toggle.addEventListener("change", () => {
+            document.body.classList.toggle("light-mode");
+            if (document.body.classList.contains("light-mode")) {
+            localStorage.setItem("theme", "light");
+            label.textContent = "☀️";
+            } else {
+            localStorage.setItem("theme", "dark");
+            label.textContent = "🌙";
+            }
+        });
+    </script>    
 </body>
 </html>
