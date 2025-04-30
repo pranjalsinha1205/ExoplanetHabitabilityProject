@@ -1,4 +1,4 @@
-"# ExoplanetHabitabilityProject" 
+# ExoplanetHabitabilityProject
 
 ![Screen](image-2.png)
 
